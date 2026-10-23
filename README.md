@@ -1,6 +1,6 @@
 # AWS Transform Custom Blog Samples
 
-This repository has sample transformation definitions (TDs) for [AWS Transform custom](https://aws.amazon.com/transform/custom/). They accompany a blog post. Each TD is a `SKILL.md` file plus its reference material, and you can run it with AWS Transform custom to reproduce the results in the post.
+A collection of sample transformation definitions (TDs) for [AWS Transform custom](https://aws.amazon.com/transform/custom/). They accompany a blog post. Each TD is a `SKILL.md` file plus its reference material, and you can run it with AWS Transform custom to reproduce the results in the post.
 
 ## Contents
 
