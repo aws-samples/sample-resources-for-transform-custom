@@ -1,0 +1,11 @@
+{
+  "name": "inventory-web",
+  "description": "AngularJS 1.x frontend for the Inventory & Order Management sample app. Bower itself is deprecated/EOL tooling and is retained deliberately so that modernization tooling can detect it.",
+  "private": true,
+  "dependencies": {
+    "angular": "1.5.11",
+    "angular-route": "1.5.11",
+    "jquery": "1.12.4",
+    "bootstrap": "3.3.7"
+  }
+}

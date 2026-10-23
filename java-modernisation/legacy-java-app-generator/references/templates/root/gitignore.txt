@@ -1,0 +1,10 @@
+target/
+wildfly-local/
+*.class
+*.log
+.DS_Store
+.idea/
+*.iml
+.settings/
+.classpath
+.project

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="inventoryApp">
+<head>
+    <meta charset="utf-8">
+    <title>Inventory &amp; Order Management</title>
+    <base href="/inventory-web/">
+    <!--
+        Deliberately outdated frontend libraries (Bootstrap 3.3.7, AngularJS 1.5.11, jQuery 1.12.4),
+        retained so that AWS Transform Continuous Modernisation can detect and process them.
+    -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#!/dashboard">Inventory &amp; Order Management</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="#!/dashboard">Dashboard</a></li>
+            <li><a href="#!/products">Products</a></li>
+            <li><a href="#!/customers">Customers</a></li>
+            <li><a href="#!/orders">Orders</a></li>
+            <li><a href="#!/invoices">Invoices</a></li>
+            <li><a href="#!/notifications">Notifications</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-view></div>
+</div>
+
+<!-- Deliberately outdated: jQuery 1.x, AngularJS 1.x (EOL) and Bootstrap 3.x -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/angular/angular.min.js"></script>
+<script src="lib/angular-route/angular-route.min.js"></script>
+<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="app/app.module.js"></script>
+<script src="app/app.config.js"></script>
+<script src="app/app.constants.js"></script>
+
+<script src="app/product/product.service.js"></script>
+<script src="app/product/product-list.controller.js"></script>
+<script src="app/product/product-detail.controller.js"></script>
+
+<script src="app/customer/customer.service.js"></script>
+<script src="app/customer/customer-list.controller.js"></script>
+<script src="app/customer/customer-detail.controller.js"></script>
+
+<script src="app/order/order.service.js"></script>
+<script src="app/order/order-list.controller.js"></script>
+<script src="app/order/order-new.controller.js"></script>
+
+<script src="app/invoice/invoice.service.js"></script>
+<script src="app/invoice/invoice-list.controller.js"></script>
+
+<script src="app/notification/notification.service.js"></script>
+<script src="app/notification/notification-list.controller.js"></script>
+
+<script src="app/report/report.service.js"></script>
+<script src="app/report/dashboard.controller.js"></script>
+</body>
+</html>

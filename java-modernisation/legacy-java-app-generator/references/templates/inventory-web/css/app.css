@@ -1,0 +1,404 @@
+/* =============================================================================
+   Inventory & Order Management - application stylesheet
+
+   This file layers a modern visual theme on top of Bootstrap 3 purely through
+   the cascade. It is linked AFTER bootstrap.min.css in index.html, so every
+   rule here overrides the framework defaults without any change to the HTML
+   markup or JavaScript. No class names are added or removed in the templates;
+   we only restyle the classes the app already uses (navbar, panel, table,
+   btn-*, alert-*, etc.).
+   ============================================================================= */
+
+/* ---- Design tokens -------------------------------------------------------- */
+:root {
+    --brand:        #2d3561;   /* deep indigo - primary brand            */
+    --brand-dark:   #222a4e;   /* navbar / pressed states                */
+    --brand-light:  #3d4780;   /* hover                                  */
+    --accent:       #16b1a6;   /* teal accent - highlights, top borders  */
+    --accent-dark:  #0f8c84;
+
+    --ok:           #2e9e5b;
+    --warn:         #e0a106;
+    --danger:       #d64550;
+
+    --ink:          #1f2430;   /* primary text        */
+    --ink-muted:    #6b7280;   /* labels, secondary   */
+    --line:         #e3e6ee;   /* borders / dividers  */
+    --surface:      #ffffff;   /* cards / panels      */
+    --bg:           #f4f6fb;   /* page background     */
+
+    --radius:       10px;
+    --radius-sm:    6px;
+    --shadow:       0 1px 2px rgba(31, 36, 48, .06),
+                    0 6px 16px rgba(31, 36, 48, .08);
+    --shadow-hover: 0 2px 4px rgba(31, 36, 48, .08),
+                    0 12px 28px rgba(31, 36, 48, .14);
+}
+
+/* ---- Base ----------------------------------------------------------------- */
+body {
+    padding-top: 0;                      /* navbar is in normal flow here */
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+h2, h3 {
+    color: var(--ink);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    margin: 4px 0 20px;
+    font-size: 26px;
+}
+
+h3 {
+    margin: 28px 0 14px;
+    font-size: 19px;
+}
+
+a {
+    color: var(--brand-light);
+}
+
+a:hover,
+a:focus {
+    color: var(--brand);
+}
+
+/* ---- Navbar --------------------------------------------------------------- */
+.navbar.navbar-default {
+    background: linear-gradient(90deg, var(--brand) 0%, var(--brand-dark) 100%);
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 10px rgba(31, 36, 48, .18);
+    min-height: 58px;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: .2px;
+    line-height: 58px;
+    height: 58px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+
+/* teal brand dot before the title */
+.navbar-default .navbar-brand::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: middle;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: rgba(255, 255, 255, .82);
+    font-weight: 500;
+    line-height: 58px;
+    height: 58px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: color .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, .08);
+}
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, .12);
+    box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+/* ---- Main content shell --------------------------------------------------- */
+.container-fluid > [ng-view],
+.container-fluid > ng-view {
+    display: block;
+    max-width: 1180px;
+    margin: 0 auto 48px;
+    padding: 28px 30px 32px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* keep the navbar's own container full width */
+.navbar .container-fluid {
+    max-width: none;
+    padding: 0 18px;
+}
+
+/* ---- KPI cards (dashboard panels) ----------------------------------------- */
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.row > [class^="col-"],
+.row > [class*=" col-"] {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.panel.panel-default {
+    position: relative;
+    margin-bottom: 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.panel.panel-default:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* colored accent strip across the top of each card */
+.panel.panel-default::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--accent);
+}
+
+/* rotate accent colors across the four dashboard cards */
+.row > [class*="col-"]:nth-child(1) .panel.panel-default::before { background: var(--brand); }
+.row > [class*="col-"]:nth-child(2) .panel.panel-default::before { background: var(--accent); }
+.row > [class*="col-"]:nth-child(3) .panel.panel-default::before { background: var(--ok); }
+.row > [class*="col-"]:nth-child(4) .panel.panel-default::before { background: var(--warn); }
+
+.panel.panel-default .panel-heading {
+    background: transparent;
+    border: 0;
+    padding: 18px 20px 2px;
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.panel.panel-default .panel-body {
+    padding: 0 20px 20px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--ink);
+}
+
+/* ---- Tables --------------------------------------------------------------- */
+.table {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 6px;
+}
+
+.table > thead > tr > th {
+    background: #f0f2f8;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-muted);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding: 12px 14px;
+}
+
+.table > tbody > tr > td,
+table.table td,
+table.table th {
+    vertical-align: middle;
+    padding: 11px 14px;
+    border-top: 1px solid var(--line);
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    background: #fafbfe;
+}
+
+.table > tbody > tr {
+    transition: background .12s ease;
+}
+
+.table-striped > tbody > tr:hover,
+.table > tbody > tr:hover {
+    background: #eef1fb;
+}
+
+/* softened low-stock / alert rows */
+.table > tbody > tr.danger,
+.table > tbody > tr.danger:nth-of-type(odd),
+.table-striped > tbody > tr.danger {
+    background: #fdecec;
+    box-shadow: inset 3px 0 0 var(--danger);
+}
+
+.table > tbody > tr.danger:hover {
+    background: #fbdede;
+}
+
+/* ---- Buttons -------------------------------------------------------------- */
+.btn {
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    transition: background .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-sm {
+    padding: 4px 10px;
+    font-size: 12.5px;
+}
+
+.btn-primary {
+    background: var(--brand);
+    border-color: var(--brand);
+    color: #fff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: var(--brand-light);
+    border-color: var(--brand-light);
+    color: #fff;
+}
+
+.btn-warning {
+    background: var(--warn);
+    border-color: var(--warn);
+    color: #3a2d00;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+    background: #c98f05;
+    border-color: #c98f05;
+    color: #3a2d00;
+}
+
+.btn-danger {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #fff;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background: #bf3b45;
+    border-color: #bf3b45;
+    color: #fff;
+}
+
+/* visible keyboard focus ring (accessibility) */
+.btn:focus,
+.btn:focus-visible,
+a:focus-visible,
+.navbar-nav > li > a:focus-visible {
+    outline: 3px solid rgba(22, 177, 166, .45);
+    outline-offset: 2px;
+}
+
+/* "Add Product" style action buttons get a little breathing room */
+h2 + .btn,
+.btn-primary[href] {
+    margin-bottom: 18px;
+}
+
+/* ---- Alerts, loading & empty states --------------------------------------- */
+.alert {
+    border: 0;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font-weight: 500;
+}
+
+.alert-danger {
+    background: #fdecec;
+    color: #8f2e35;
+    box-shadow: inset 3px 0 0 var(--danger);
+}
+
+/* AngularJS loading / empty text ("Loading products...", "No ... alerts.") */
+[ng-if*="loading"],
+[ng-if*="length === 0"],
+[ng-if*="length == 0"] {
+    color: var(--ink-muted);
+    font-style: italic;
+}
+
+/* ---- Forms (order-new, product-detail, etc.) ------------------------------ */
+.form-control {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    box-shadow: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(22, 177, 166, .18);
+}
+
+label,
+.control-label {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+/* ---- Responsive tweaks ---------------------------------------------------- */
+@media (max-width: 768px) {
+    .container-fluid > [ng-view],
+    .container-fluid > ng-view {
+        padding: 20px 16px 24px;
+        margin-bottom: 28px;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        line-height: 1.6;
+        height: auto;
+        padding: 10px 15px;
+    }
+
+    .panel.panel-default .panel-body {
+        font-size: 28px;
+    }
+}

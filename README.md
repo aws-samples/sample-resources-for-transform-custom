@@ -1,17 +1,9 @@
-## My Project
+# AWS Transform Custom Blog Samples
 
-TODO: Fill this README out!
+This repository has sample transformation definitions (TDs) for [AWS Transform custom](https://aws.amazon.com/transform/custom/). They accompany a blog post. Each TD is a `SKILL.md` file plus its reference material, and you can run it with AWS Transform custom to reproduce the results in the post.
 
-Be sure to:
+## Contents
 
-* Change the title in this README
-* Edit your repository description on GitHub
-
-## Security
-
-See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more information.
-
-## License
-
-This library is licensed under the MIT-0 License. See the LICENSE file.
-
+| Sample | Description |
+|---|---|
+| [java-modernisation/legacy-java-app-generator](java-modernisation/legacy-java-app-generator/) | Builds a deliberately legacy Jakarta EE 8 (`javax.*`) Inventory & Order Management app from scratch: a Java 11 multi-module Maven EAR for WildFly with EOL libraries and an AngularJS 1.x frontend. You can use it as the input for later modernization transformations. |
