@@ -6,4 +6,4 @@ A collection of sample transformation definitions (TDs) for [AWS Transform custo
 
 | Sample | Description |
 |---|---|
-| [java-modernisation/legacy-java-app-generator](java-modernisation/legacy-java-app-generator/) | Builds a deliberately legacy Jakarta EE 8 (`javax.*`) Inventory & Order Management app from scratch: a Java 11 multi-module Maven EAR for WildFly with EOL libraries and an AngularJS 1.x frontend. You can use it as the input for later modernization transformations. |
+| [java-modernisation/legacy-java-app-generator](java-modernisation/legacy-java-app-generator/) | Builds, for educational purpose only, a deliberately legacy Jakarta EE 8 (`javax.*`) Inventory & Order Management app from scratch: a Java 11 multi-module Maven EAR for WildFly with EOL libraries and an AngularJS 1.x frontend. You can use it as the input for later modernization transformations. |
