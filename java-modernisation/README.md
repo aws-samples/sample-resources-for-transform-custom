@@ -1,7 +1,6 @@
 # Java Modernisation Sample
 
-This example is for demonstration only. It generates, for educational purposes only,
-a legacy Jakarta EE 8 (`javax.*`) application to use as the input of later modernisation transformations.
+This example is the companion resource for this [blog post](https://builder.aws.com/content/3LNMhPi6rrAeiiSMDAjHMDaMpHH/modernising-a-legacy-java-ee-app-with-aws-transform-custom-java-25-spring-boot-and-react-in-four-steps). It is intended for educational purposes only. It generates a legacy Jakarta EE 8 (`javax.*`) application that you can use as the input for later modernisation transformations.
 
 | Sample | Purpose |
 |---|---|
